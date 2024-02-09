@@ -1,18 +1,20 @@
 # oidc-thumbprint-finder
 
-Dockerfile that takes in an OIDC IdP URL to obtain it's thumbprint (SHA1 hash of the public certificate)
+Dockerfile that takes in an OIDC IdP URL to obtain its thumbprint (SHA1 hash of the public certificate)
 
-- Provide the OIDC IdP URL as a CMD, it uses GitHub's popular OIDC as an example
-- You *MUST* include HTTP header
-- Yout *MUST* exclude the training slash
+Provide the OIDC IdP URL as a CMD; it uses GitHub's popular OIDC as a default example
 
-Build
+* You MUST include the HTTP header
+* You MUST exclude the trailing slash
+
+Example (using default - GitHub's )
 ```bash
-docker build --platform linux/amd64 . -t tmp  
+docker run --platform linux/amd64  nullstring/oidc-thumbprint-finder:latest                                       
+1b511abead59c6ce207077c0bf0e0043b1382612
 ```
 
-Run Example 
+Example using a Specific IdP
 ```bash
-OIDC_IDP_URL=https://token.actions.githubusercontent.com
-docker run nullstring/oidc-thumbprint-finder $OIDC_IDP_URL
+docker run --platform linux/amd64  nullstring/oidc-thumbprint-finder:latest https://api.pulumi.com/oidc
+9e99a48a9960b14926bb7f3b02e22da2b0ab7280
 ```
