@@ -2,9 +2,9 @@
 
 Dockerfile that takes in an OIDC IdP URL to obtain its thumbprint (SHA1 hash of the public certificate)
 
-Provide the OIDC IdP URL as a CMD; it uses GitHub's popular OIDC as a default example
+Provide the OIDC IdP URL as a parameter; it uses GitHub's popular OIDC as a default example
 
-* You MUST include the HTTP header
+* You MUST include the HTTP protocol as part of the URL (see examples)
 * You MUST exclude the trailing slash
 
 Example (using default - GitHub's )
